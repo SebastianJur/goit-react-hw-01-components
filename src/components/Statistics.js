@@ -2,21 +2,21 @@ import React from 'react';
 import './Statistics.css';
 import PropTypes from 'prop-types';
 
+const randomColor = () =>
+  `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+
 const Statistics = ({ title, data }) => {
   return (
     <section className="statistics">
       {title ? <h2 className="title">{title}</h2> : null}
       <ul className="stat-list">
         {data.map((item) => {
-          const randomColor = `#${Math.floor(Math.random() * 16777215)
-            .toString(16)
-            .padStart(6, 0)}`;
-          const itemStyle = {
-            backgroundColor: randomColor,
-          };
-
+          
           return (
-            <li key={item.id} className="item" style={itemStyle}>
+            <li
+              key={item.id}
+              className="item"
+              style={{ backgroundColor: randomColor() }}>
               <span className="label">{item.label}</span>
               <span className="percentage">{item.percentage}%</span>
             </li>
