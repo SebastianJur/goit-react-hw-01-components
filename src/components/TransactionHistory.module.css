@@ -1,6 +1,7 @@
 .transaction-history {
   font-size: 12px;
   width: 250px;
+  margin-bottom: 15px;
   border-radius: 5px;
   box-shadow: 0px 0px 2px 0px rgba(66, 68, 90, 1);
   overflow: hidden;
