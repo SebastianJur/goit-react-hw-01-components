@@ -2,8 +2,18 @@ import React from 'react';
 import './Statistics.css';
 import PropTypes from 'prop-types';
 
-const randomColor = () =>
-  `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+function getRandomColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  if (color === '#FFFFFF') {
+    return getRandomColor();
+  } else {
+    return color;
+  }
+}
 
 const Statistics = ({ title, data }) => {
   return (
@@ -16,7 +26,8 @@ const Statistics = ({ title, data }) => {
             <li
               key={item.id}
               className="item"
-              style={{ backgroundColor: randomColor() }}>
+              style={{ backgroundColor: getRandomColor() }}
+            >
               <span className="label">{item.label}</span>
               <span className="percentage">{item.percentage}%</span>
             </li>
@@ -34,8 +45,8 @@ Statistics.propTypes = {
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       percentage: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
+    })
+  ),
 };
 
 export default Statistics;
